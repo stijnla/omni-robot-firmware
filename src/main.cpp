@@ -36,8 +36,8 @@ VelocityControl velocity_control_right(dc_motor_right, hal_sensor_right, 50.0, 1
 Command current_command;
 
 // IMU calibration data
-double acceleration_calibration[3] = {0.00, 0.00, 0.00};
-double gyro_calibration[3] = {-2.60, 2.71, 1.88};
+double acceleration_calibration[3] = {0.02, 0.02, 0.01};
+double gyro_calibration[3] = {-1.38, 1.90, 1.77};
 calData calib = { 1,};  //Calibration data
 AccelData accelData;    //Sensor data
 GyroData gyroData;
@@ -121,26 +121,27 @@ void loop()
   IMU.getGyro(&gyroData);
   
   //Sent data back to master
+  Serial.print("!");
   Serial.print(accelData.accelX);
-  Serial.print("\t");
+  Serial.print(",");
   Serial.print(accelData.accelY);
-  Serial.print("\t");
+  Serial.print(",");
   Serial.print(accelData.accelZ);
-  Serial.print("\t");
+  Serial.print(",");
   Serial.print(gyroData.gyroX);
-  Serial.print("\t");
+  Serial.print(",");
   Serial.print(gyroData.gyroY);
-  Serial.print("\t");
+  Serial.print(",");
   Serial.print(gyroData.gyroZ);
-  Serial.print("\t");
+  Serial.print(",");
   Serial.print(IMU.getTemp());
-  Serial.print("\t");
+  Serial.print(",");
+  Serial.print(s1.current_speed);
+  Serial.print(",");
+  Serial.print(s1.control_signal);
+  Serial.print(",");
   Serial.print(s2.current_speed);
-  Serial.print("\t");
-  Serial.print(s2.control_signal);
-  Serial.print("\t");
-  Serial.print(s2.current_speed);
-  Serial.print("\t"); 
+  Serial.print(","); 
   Serial.print(s2.control_signal);
   Serial.println();
 }

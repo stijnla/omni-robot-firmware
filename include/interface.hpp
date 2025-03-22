@@ -14,7 +14,7 @@ class Command{
     int _decoded_speed_left = 0;
     int _decoded_speed_right = 0;
     String message;
-    static const int _message_length = 9;
+    static const int _message_length = 7;
 
     int convertChar(char a);
 
